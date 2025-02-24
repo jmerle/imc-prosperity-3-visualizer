@@ -38,7 +38,7 @@ export function LoadFromProsperity(): ReactNode {
   const round = useStore(state => state.round);
   const setRound = useStore(state => state.setRound);
 
-  const [proxy, setProxy] = useState('https://imc-prosperity-2-visualizer-cors-anywhere.jmerle.dev/');
+  const [proxy, setProxy] = useState('https://imc-prosperity-3-visualizer-cors-anywhere.jmerle.dev/');
 
   const loadAlgorithms = useAsync<AlgorithmSummary[]>(async (): Promise<AlgorithmSummary[]> => {
     let response: AxiosResponse<AlgorithmSummary[]>;
@@ -70,12 +70,12 @@ export function LoadFromProsperity(): ReactNode {
 
   const now = Date.now();
   const rounds = [
-    { value: 'ROUND0', label: 'Tutorial', openFrom: '2024-02-12T09:00:00.000Z' },
-    { value: 'ROUND1', label: 'Round 1', openFrom: '2024-04-08T09:00:00.000Z' },
-    { value: 'ROUND2', label: 'Round 2', openFrom: '2024-04-12T09:00:00.000Z' },
-    { value: 'ROUND3', label: 'Round 3', openFrom: '2024-04-15T09:00:00.000Z' },
-    { value: 'ROUND4', label: 'Round 4', openFrom: '2024-04-19T09:00:00.000Z' },
-    { value: 'ROUND5', label: 'Round 5', openFrom: '2024-04-22T09:00:00.000Z' },
+    { value: 'ROUND0', label: 'Tutorial', openFrom: '2025-02-24T09:00:00.000Z' },
+    { value: 'ROUND1', label: 'Round 1', openFrom: '2025-04-07T09:00:00.000Z' },
+    { value: 'ROUND2', label: 'Round 2', openFrom: '2025-04-10T09:00:00.000Z' },
+    { value: 'ROUND3', label: 'Round 3', openFrom: '2025-04-13T09:00:00.000Z' },
+    { value: 'ROUND4', label: 'Round 4', openFrom: '2025-04-16T09:00:00.000Z' },
+    { value: 'ROUND5', label: 'Round 5', openFrom: '2025-04-19T09:00:00.000Z' },
   ].map(round => {
     const disabled = Date.parse(round.openFrom) > now;
     const label = disabled ? `${round.label} - Available from ${formatTimestamp(round.openFrom)}` : round.label;

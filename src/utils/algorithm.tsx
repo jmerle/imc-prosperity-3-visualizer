@@ -130,7 +130,7 @@ function decompressObservations(compressed: CompressedObservations): Observation
 
   for (const [
     product,
-    [bidPrice, askPrice, transportFees, exportTariff, importTariff, sunlight, humidity],
+    [bidPrice, askPrice, transportFees, exportTariff, importTariff, sugarPrice, sunlightIndex],
   ] of Object.entries(compressed[1])) {
     conversionObservations[product] = {
       bidPrice,
@@ -138,8 +138,8 @@ function decompressObservations(compressed: CompressedObservations): Observation
       transportFees,
       exportTariff,
       importTariff,
-      sunlight,
-      humidity,
+      sugarPrice,
+      sunlightIndex,
     };
   }
 

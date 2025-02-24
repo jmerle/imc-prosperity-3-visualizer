@@ -48,8 +48,8 @@ export interface ConversionObservation {
   transportFees: number;
   exportTariff: number;
   importTariff: number;
-  sunlight: number;
-  humidity: number;
+  sugarPrice: number;
+  sunlightIndex: number;
 }
 
 export interface Observation {

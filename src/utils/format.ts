@@ -8,5 +8,5 @@ export function formatNumber(value: number, decimals: number = 0): string {
 }
 
 export function formatTimestamp(timestamp: string): string {
-  return format(Date.parse(timestamp), 'yyyy-MM-dd HH:mm:ss');
+  return format(Date.parse(timestamp), 'yyyy-MM-dd HH:mm:ss') + ' (local time)';
 }

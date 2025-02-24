@@ -9,8 +9,10 @@ import { LoadFromUrl } from './LoadFromUrl.tsx';
 export function HomePage(): ReactNode {
   const exampleCode = `
 import json
-from datamodel import Listing, Observation, Order, OrderDepth, ProsperityEncoder, Symbol, Trade, TradingState
 from typing import Any
+
+from datamodel import Listing, Observation, Order, OrderDepth, ProsperityEncoder, Symbol, Trade, TradingState
+
 
 class Logger:
     def __init__(self) -> None:
@@ -21,24 +23,32 @@ class Logger:
         self.logs += sep.join(map(str, objects)) + end
 
     def flush(self, state: TradingState, orders: dict[Symbol, list[Order]], conversions: int, trader_data: str) -> None:
-        base_length = len(self.to_json([
-            self.compress_state(state, ""),
-            self.compress_orders(orders),
-            conversions,
-            "",
-            "",
-        ]))
+        base_length = len(
+            self.to_json(
+                [
+                    self.compress_state(state, ""),
+                    self.compress_orders(orders),
+                    conversions,
+                    "",
+                    "",
+                ]
+            )
+        )
 
         # We truncate state.traderData, trader_data, and self.logs to the same max. length to fit the log limit
         max_item_length = (self.max_log_length - base_length) // 3
 
-        print(self.to_json([
-            self.compress_state(state, self.truncate(state.traderData, max_item_length)),
-            self.compress_orders(orders),
-            conversions,
-            self.truncate(trader_data, max_item_length),
-            self.truncate(self.logs, max_item_length),
-        ]))
+        print(
+            self.to_json(
+                [
+                    self.compress_state(state, self.truncate(state.traderData, max_item_length)),
+                    self.compress_orders(orders),
+                    conversions,
+                    self.truncate(trader_data, max_item_length),
+                    self.truncate(self.logs, max_item_length),
+                ]
+            )
+        )
 
         self.logs = ""
 
@@ -72,14 +82,16 @@ class Logger:
         compressed = []
         for arr in trades.values():
             for trade in arr:
-                compressed.append([
-                    trade.symbol,
-                    trade.price,
-                    trade.quantity,
-                    trade.buyer,
-                    trade.seller,
-                    trade.timestamp,
-                ])
+                compressed.append(
+                    [
+                        trade.symbol,
+                        trade.price,
+                        trade.quantity,
+                        trade.buyer,
+                        trade.seller,
+                        trade.timestamp,
+                    ]
+                )
 
         return compressed
 
@@ -92,8 +104,8 @@ class Logger:
                 observation.transportFees,
                 observation.exportTariff,
                 observation.importTariff,
-                observation.sunlight,
-                observation.humidity,
+                observation.sugarPrice,
+                observation.sunlightIndex,
             ]
 
         return [observations.plainValueObservations, conversion_observations]
@@ -113,9 +125,11 @@ class Logger:
         if len(value) <= max_length:
             return value
 
-        return value[:max_length - 3] + "..."
+        return value[: max_length - 3] + "..."
+
 
 logger = Logger()
+
 
 class Trader:
     def run(self, state: TradingState) -> tuple[dict[Symbol, list[Order]], int, str]:
@@ -135,16 +149,15 @@ class Trader:
         <HomeCard title="Welcome!">
           {/* prettier-ignore */}
           <Text>
-            IMC Prosperity 2 Visualizer is a visualizer for <Anchor href="https://prosperity.imc.com/" target="_blank" rel="noreferrer">IMC Prosperity 2</Anchor> algorithms.
-            Its source code is available in the <Anchor href="https://github.com/jmerle/imc-prosperity-2-visualizer" target="_blank" rel="noreferrer">jmerle/imc-prosperity-2-visualizer</Anchor> GitHub repository.
-            It is based on the <Anchor href="https://jmerle.github.io/imc-prosperity-visualizer/" target="_blank" rel="noreferrer">IMC Prosperity 1 visualizer</Anchor> by the same author.
+            IMC Prosperity 3 Visualizer is a visualizer for <Anchor href="https://prosperity.imc.com/" target="_blank" rel="noreferrer">IMC Prosperity 3</Anchor> algorithms.
+            Its source code is available in the <Anchor href="https://github.com/jmerle/imc-prosperity-3-visualizer" target="_blank" rel="noreferrer">jmerle/imc-prosperity-3-visualizer</Anchor> GitHub repository.
             Load an algorithm below to get started.
           </Text>
         </HomeCard>
 
         <HomeCard title="Prerequisites">
           <Text>
-            IMC Prosperity 2 Visualizer assumes your algorithm logs in a certain format. Algorithms that use a different
+            IMC Prosperity 3 Visualizer assumes your algorithm logs in a certain format. Algorithms that use a different
             logging format may cause unexpected errors when opening them in the visualizer. Please use the following
             boilerplate for your algorithm (or adapt your algorithm to use the logger from this code) and use{' '}
             <Code>logger.print()</Code> where you would normally use <Code>print()</Code>:

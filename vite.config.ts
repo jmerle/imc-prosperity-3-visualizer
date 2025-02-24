@@ -4,5 +4,10 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/imc-prosperity-2-visualizer/',
+  base: '/imc-prosperity-3-visualizer/',
+  resolve: {
+    alias: {
+      '@tabler/icons-react': '@tabler/icons-react/dist/esm/icons/index.mjs',
+    },
+  },
 });

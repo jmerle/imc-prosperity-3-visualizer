@@ -33,7 +33,7 @@ export const useStore = create<State>()(
       setAlgorithm: algorithm => set({ algorithm }),
     }),
     {
-      name: 'imc-prosperity-2-visualizer',
+      name: 'imc-prosperity-3-visualizer',
       partialize: state => ({
         colorScheme: state.colorScheme,
         idToken: state.idToken,

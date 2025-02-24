@@ -19,8 +19,8 @@ export function ConversionObservationsTable({ conversionObservations }: Conversi
         <Table.Td>{formatNumber(observation.transportFees, 2)}</Table.Td>
         <Table.Td>{formatNumber(observation.exportTariff, 2)}</Table.Td>
         <Table.Td>{formatNumber(observation.importTariff, 2)}</Table.Td>
-        <Table.Td>{formatNumber(observation.sunlight, 2)}</Table.Td>
-        <Table.Td>{formatNumber(observation.humidity, 2)}</Table.Td>
+        <Table.Td>{formatNumber(observation.sugarPrice, 2)}</Table.Td>
+        <Table.Td>{formatNumber(observation.sunlightIndex, 2)}</Table.Td>
       </Table.Tr>,
     );
   }

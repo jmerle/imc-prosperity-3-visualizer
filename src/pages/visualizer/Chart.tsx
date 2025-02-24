@@ -32,6 +32,9 @@ function getThemeOptions(theme: (highcharts: typeof Highcharts) => void): Highch
         },
       },
     },
+    win: {
+      dispatchEvent: () => {},
+    },
   };
 
   theme(highchartsMock as any);
