@@ -122,8 +122,8 @@ export type CompressedConversionObservation = [
   transportFees: number,
   exportTariff: number,
   importTariff: number,
-  sunlight: number,
-  humidity: number,
+  sugarPrice: number,
+  sunlightIndex: number,
 ];
 
 export type CompressedObservations = [

@@ -35,8 +35,8 @@ export function ConversionObservationsTable({ conversionObservations }: Conversi
         'Transport fees',
         'Export tariff',
         'Import tariff',
-        'Sunlight',
-        'Humidity',
+        'Sugar price',
+        'Sunlight index',
       ]}
       rows={rows}
     />
