@@ -8,6 +8,7 @@ function getLimit(algorithm: Algorithm, symbol: ProsperitySymbol): number {
   const knownLimits: Record<string, number> = {
     RAINFOREST_RESIN: 50,
     KELP: 50,
+    SQUID_INK: 50,
   };
 
   if (knownLimits[symbol] !== undefined) {
