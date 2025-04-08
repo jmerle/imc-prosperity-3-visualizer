@@ -1,4 +1,4 @@
-import { Code, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
 import { ReactNode } from 'react';
 import {
   ActivityLogRow,
@@ -229,11 +229,12 @@ function getAlgorithmData(logLines: string[]): AlgorithmDataRow[] {
       console.error(err);
 
       throw new AlgorithmParseError(
-        /* prettier-ignore */
-        <>
-          <Text size="sm">Logs are in invalid format, please see the prerequisites section above. Could not parse the following line:</Text>
-          <Text size="sm">{line}</Text>
-        </>,
+        (
+          <>
+            <Text>Logs are in invalid format. Could not parse the following line:</Text>
+            <Text>{line}</Text>
+          </>
+        ),
       );
     }
   }
@@ -249,14 +250,19 @@ export function parseAlgorithmLogs(logs: string, summary?: AlgorithmSummary): Al
 
   if (activityLogs.length === 0 && data.length === 0) {
     throw new AlgorithmParseError(
-      "Logs are empty, either something went wrong during with your submission or your backtester logs in a different format than Prosperity's submission environment.",
+      (
+        <Text>
+          Logs are empty, either something went wrong with your submission or your backtester logs in a different format
+          than Prosperity&apos;s submission environment.
+        </Text>
+      ),
     );
   }
 
   if (activityLogs.length === 0 || data.length === 0) {
     throw new AlgorithmParseError(
       /* prettier-ignore */
-      <Text size="sm">Logs are in invalid format, please see the prerequisites section above. You are likely missing a <Code>logger.flush()</Code> call at the end of <Code>Trader.run()</Code>.</Text>,
+      <Text>Logs are in invalid format.</Text>,
     );
   }
 
