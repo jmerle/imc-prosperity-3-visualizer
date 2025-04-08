@@ -13,6 +13,14 @@ import { PositionTable } from './PositionTable.tsx';
 import { ProfitLossTable } from './ProfitLossTable.tsx';
 import { TradesTable } from './TradesTable.tsx';
 
+function formatTraderData(value: any): string {
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  return JSON.stringify(value);
+}
+
 export interface TimestampDetailProps {
   row: AlgorithmDataRow;
 }
@@ -31,7 +39,8 @@ export function TimestampDetail({
       <Grid.Col span={12}>
         {/* prettier-ignore */}
         <Title order={5}>
-          Timestamp {formatNumber(state.timestamp)} • Profit / Loss: {formatNumber(profitLoss)} • Conversions: {formatNumber(conversions)}
+          Timestamp {formatNumber(state.timestamp)} • Profit / Loss: {formatNumber(profitLoss)} •
+          Conversions: {formatNumber(conversions)}
         </Title>
       </Grid.Col>
       <Grid.Col span={{ xs: 12, sm: 4 }}>
@@ -93,7 +102,7 @@ export function TimestampDetail({
       <Grid.Col span={{ xs: 12, sm: 6 }}>
         <Title order={5}>Previous trader data</Title>
         {state.traderData ? (
-          <ScrollableCodeHighlight code={state.traderData} language="json" />
+          <ScrollableCodeHighlight code={formatTraderData(state.traderData)} language="json" />
         ) : (
           <Text>Timestamp has no previous trader data</Text>
         )}
@@ -101,7 +110,7 @@ export function TimestampDetail({
       <Grid.Col span={{ xs: 12, sm: 6 }}>
         <Title order={5}>Next trader data</Title>
         {traderData ? (
-          <ScrollableCodeHighlight code={traderData} language="json" />
+          <ScrollableCodeHighlight code={formatTraderData(traderData)} language="json" />
         ) : (
           <Text>Timestamp has no next trader data</Text>
         )}
