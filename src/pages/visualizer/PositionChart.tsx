@@ -9,6 +9,11 @@ function getLimit(algorithm: Algorithm, symbol: ProsperitySymbol): number {
     RAINFOREST_RESIN: 50,
     KELP: 50,
     SQUID_INK: 50,
+    CROISSANTS: 250,
+    JAMS: 350,
+    DJEMBES: 60,
+    PICNIC_BASKET1: 60,
+    PICNIC_BASKET2: 100,
   };
 
   if (knownLimits[symbol] !== undefined) {
