@@ -14,6 +14,12 @@ function getLimit(algorithm: Algorithm, symbol: ProsperitySymbol): number {
     DJEMBES: 60,
     PICNIC_BASKET1: 60,
     PICNIC_BASKET2: 100,
+    VOLCANIC_ROCK: 400,
+    VOLCANIC_ROCK_VOUCHER_9500: 200,
+    VOLCANIC_ROCK_VOUCHER_9750: 200,
+    VOLCANIC_ROCK_VOUCHER_10000: 200,
+    VOLCANIC_ROCK_VOUCHER_10250: 200,
+    VOLCANIC_ROCK_VOUCHER_10500: 200,
   };
 
   if (knownLimits[symbol] !== undefined) {
