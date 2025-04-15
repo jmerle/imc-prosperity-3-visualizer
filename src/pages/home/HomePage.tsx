@@ -122,10 +122,25 @@ class Logger:
         return json.dumps(value, cls=ProsperityEncoder, separators=(",", ":"))
 
     def truncate(self, value: str, max_length: int) -> str:
-        if len(value) <= max_length:
-            return value
+        lo, hi = 0, min(len(value), max_length)
+        out = ""
 
-        return value[: max_length - 3] + "..."
+        while lo <= hi:
+            mid = (lo + hi) // 2
+
+            candidate = value[:mid]
+            if len(candidate) < len(value):
+                candidate += "..."
+
+            encoded_candidate = json.dumps(candidate)
+
+            if len(encoded_candidate) <= max_length:
+                out = candidate
+                lo = mid + 1
+            else:
+                hi = mid - 1
+
+        return out
 
 
 logger = Logger()
