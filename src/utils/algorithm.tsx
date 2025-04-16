@@ -211,6 +211,15 @@ function getAlgorithmData(logLines: string[]): AlgorithmDataRow[] {
 
     if (line.startsWith(sandboxLogPrefix)) {
       nextSandboxLogs = JSON.parse(line.substring(sandboxLogPrefix.length, line.length - 1)).trim();
+
+      if (nextSandboxLogs.startsWith('Conversion request of')) {
+        const lastRow = rows[rows.length - 1];
+        lastRow.sandboxLogs += (lastRow.sandboxLogs.length > 0 ? '\n' : '') + nextSandboxLogs;
+
+        nextSandboxLogs = '';
+        i += 1;
+      }
+
       continue;
     }
 
