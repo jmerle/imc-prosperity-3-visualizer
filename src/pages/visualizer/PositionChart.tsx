@@ -20,6 +20,7 @@ function getLimit(algorithm: Algorithm, symbol: ProsperitySymbol): number {
     VOLCANIC_ROCK_VOUCHER_10000: 200,
     VOLCANIC_ROCK_VOUCHER_10250: 200,
     VOLCANIC_ROCK_VOUCHER_10500: 200,
+    MAGNIFICENT_MACARONS: 75,
   };
 
   if (knownLimits[symbol] !== undefined) {
